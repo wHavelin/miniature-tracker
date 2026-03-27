@@ -1,0 +1,131 @@
+.stats-container {
+  margin-bottom: 1.5rem;
+}
+
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.stat-progress-bar {
+  margin-top: 0.75rem;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent), #f4a261);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.system-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.system-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.system-name {
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.system-count {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.system-more .system-name {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Status badge strip */
+.stats-status-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--badge-bg, #555);
+  color: var(--badge-text, #fff);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.badge-label {
+  white-space: nowrap;
+}
+
+.badge-count {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 999px;
+  padding: 0 0.4rem;
+  font-size: 0.72rem;
+  min-width: 1.4em;
+  text-align: center;
+}
+
+.badge-pct {
+  font-size: 0.7rem;
+}
+
+@media (max-width: 600px) {
+  .stats-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat-systems {
+    grid-column: span 2;
+  }
+}

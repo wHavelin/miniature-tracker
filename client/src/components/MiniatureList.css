@@ -1,0 +1,27 @@
+.miniature-list {
+  /* no special container needed */
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.list-count {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.miniature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .miniature-grid {
+    grid-template-columns: 1fr;
+  }
+}

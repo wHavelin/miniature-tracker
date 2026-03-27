@@ -1,0 +1,247 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+  z-index: 1;
+}
+
+.modal-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.modal-close {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: var(--radius);
+}
+
+.modal-close:hover {
+  color: var(--color-text);
+  background: var(--color-surface-raised);
+}
+
+.mini-form {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field-wide {
+  grid-column: span 1;
+}
+
+.form-field-narrow {
+  grid-column: span 1;
+}
+
+.form-field-full {
+  grid-column: span 2;
+}
+
+.status-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.status-select-wrapper select {
+  padding-right: 2rem;
+}
+
+.status-dot {
+  position: absolute;
+  right: 0.75rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  flex-shrink: 0;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+/* Image upload */
+.image-upload-area {
+  width: 100%;
+}
+
+.image-dropzone {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.image-dropzone:hover {
+  border-color: var(--color-accent);
+  background: rgba(233, 69, 96, 0.05);
+}
+
+.dropzone-icon {
+  font-size: 2rem;
+  opacity: 0.6;
+}
+
+.dropzone-text {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.dropzone-hint {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.image-preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.image-preview {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.image-preview-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.image-preview-actions button {
+  flex: 1;
+  padding: 0.45rem;
+  font-size: 0.82rem;
+}
+
+/* Add new field */
+.add-new-field {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.add-new-field input {
+  flex: 1;
+}
+
+.btn-cancel-new {
+  white-space: nowrap;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.form-actions .btn-primary {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+.form-actions .btn-secondary {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 540px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-field-full,
+  .form-field-wide {
+    grid-column: span 1;
+  }
+  .modal-panel {
+    max-height: 95vh;
+  }
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  .form-actions button {
+    width: 100%;
+  }
+}

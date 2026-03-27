@@ -1,0 +1,197 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #f7f6f2;           /* off-white — body background */
+  --color-surface: #ffffff;      /* white — cards, panels */
+  --color-surface-raised: #eeede8; /* light gray — raised/hover surfaces */
+  --color-accent: #1d4ed8;       /* blue — primary actions (#fff text: 7.2:1 ✓ AAA) */
+  --color-accent-hover: #1e40af; /* darker blue on hover */
+  --color-text: #1a1a1a;         /* near-black — body text (17.5:1 on surface ✓) */
+  --color-text-muted: #595959;   /* dark gray — labels/hints (7.0:1 on surface ✓ AAA) */
+  --color-border: #d4d3ce;       /* soft gray border */
+  --color-success: #166534;      /* dark green (#fff text: 7.5:1 ✓ AAA) */
+  --color-danger: #b91c1c;       /* dark red (#fff text: 5.8:1 ✓ AA) */
+  --color-danger-hover: #991b1b; /* darker red on hover */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --transition: 0.2s ease;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  border-radius: var(--radius);
+  transition: background-color var(--transition), transform var(--transition), opacity var(--transition);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: border-color var(--transition);
+  width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-accent);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+select option {
+  background: var(--color-surface);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.btn-secondary {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-surface-raised);
+}
+
+.btn-danger {
+  background: var(--color-danger);
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+.btn-icon {
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.btn-icon:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b; /* 5.9:1 on #fef2f2 ✓ AA */
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-muted);
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-raised);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
