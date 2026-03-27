@@ -68,7 +68,7 @@ function getAllMiniatures(filters = {}) {
   }
 
   const where = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
-  const sql = `SELECT * FROM miniatures ${where} ORDER BY created_at DESC`;
+  const sql = `SELECT * FROM miniatures ${where} ORDER BY image_path IS NULL ASC, created_at DESC`;
   return db.prepare(sql).all(...params);
 }
 
