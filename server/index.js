@@ -154,7 +154,8 @@ app.get('/api/filters', (req, res) => {
   try {
     const game_systems = db.getDistinctValues('game_system');
     const factions = db.getDistinctValues('faction');
-    res.json({ game_systems, factions });
+    const factions_by_game_system = db.getFactionsByGameSystem();
+    res.json({ game_systems, factions, factions_by_game_system });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });

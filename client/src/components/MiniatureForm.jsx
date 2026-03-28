@@ -12,7 +12,7 @@ const DEFAULT_FORM = {
 };
 
 export default function MiniatureForm({ miniature, filterOptions = {}, onSave, onClose }) {
-  const { game_systems = [], factions = [] } = filterOptions;
+  const { game_systems = [], factions = [], factions_by_game_system = {} } = filterOptions;
   const isEditing = Boolean(miniature);
   const [form, setForm] = useState(() => {
     if (miniature) {
@@ -34,6 +34,10 @@ export default function MiniatureForm({ miniature, filterOptions = {}, onSave, o
     game_system: Boolean(miniature?.game_system && !game_systems.includes(miniature.game_system)),
     faction: Boolean(miniature?.faction && !factions.includes(miniature.faction)),
   }));
+
+  const availableFactions = !addingNew.game_system && form.game_system && factions_by_game_system[form.game_system]
+    ? factions_by_game_system[form.game_system]
+    : factions;
 
   const handleSelectChange = (field, value) => {
     if (value === '__new__') {
@@ -224,7 +228,7 @@ export default function MiniatureForm({ miniature, filterOptions = {}, onSave, o
                   onChange={e => handleSelectChange('faction', e.target.value)}
                 >
                   <option value="">— None —</option>
-                  {factions.map(f => (
+                  {availableFactions.map(f => (
                     <option key={f} value={f}>{f}</option>
                   ))}
                   <option value="__new__">+ Add new...</option>

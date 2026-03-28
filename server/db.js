@@ -195,6 +195,22 @@ function getStats() {
   };
 }
 
+function getFactionsByGameSystem() {
+  const rows = db.prepare(`
+    SELECT DISTINCT game_system, faction
+    FROM miniatures
+    WHERE game_system IS NOT NULL AND game_system != ''
+      AND faction IS NOT NULL AND faction != ''
+    ORDER BY faction
+  `).all();
+  const result = {};
+  rows.forEach(({ game_system, faction }) => {
+    if (!result[game_system]) result[game_system] = [];
+    result[game_system].push(faction);
+  });
+  return result;
+}
+
 function getDistinctValues(column) {
   const allowed = ['game_system', 'faction', 'paint_status'];
   if (!allowed.includes(column)) throw new Error('Invalid column');
@@ -209,5 +225,6 @@ module.exports = {
   deleteMiniature,
   getStats,
   getDistinctValues,
+  getFactionsByGameSystem,
   UPLOADS_DIR
 };

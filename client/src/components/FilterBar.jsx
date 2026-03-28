@@ -3,7 +3,10 @@ import { PAINT_STATUSES } from '../api.js';
 import './FilterBar.css';
 
 export default function FilterBar({ filters, filterOptions, onFilterChange, onClearFilters }) {
-  const { game_systems = [], factions = [] } = filterOptions;
+  const { game_systems = [], factions = [], factions_by_game_system = {} } = filterOptions;
+  const availableFactions = filters.game_system && factions_by_game_system[filters.game_system]
+    ? factions_by_game_system[filters.game_system]
+    : factions;
 
   const hasActiveFilters = filters.game_system || filters.faction || filters.paint_status || filters.search;
 
@@ -49,7 +52,7 @@ export default function FilterBar({ filters, filterOptions, onFilterChange, onCl
           className="filter-select"
         >
           <option value="">All Factions</option>
-          {factions.map(f => (
+          {availableFactions.map(f => (
             <option key={f} value={f}>{f}</option>
           ))}
         </select>
@@ -66,11 +69,13 @@ export default function FilterBar({ filters, filterOptions, onFilterChange, onCl
           ))}
         </select>
 
-        {hasActiveFilters && (
-          <button className="btn-secondary btn-clear-filters" onClick={onClearFilters}>
-            Clear Filters
-          </button>
-        )}
+        <button
+          className="btn-secondary btn-clear-filters"
+          onClick={onClearFilters}
+          style={{ visibility: hasActiveFilters ? 'visible' : 'hidden' }}
+        >
+          Clear Filters
+        </button>
       </div>
     </div>
   );
